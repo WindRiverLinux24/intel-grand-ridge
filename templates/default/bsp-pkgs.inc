@@ -1,0 +1,5 @@
+IMAGE_INSTALL += "thrift"
+IMAGE_INSTALL += "lttng-ust"
+IMAGE_INSTALL += "meson"
+IMAGE_INSTALL += "python3-pyelftools"
+IMAGE_INSTALL += "boost-dev"
