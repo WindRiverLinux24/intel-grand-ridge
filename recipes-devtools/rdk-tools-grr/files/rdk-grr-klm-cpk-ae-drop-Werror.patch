@@ -1,0 +1,35 @@
+From 3410a583e2d22036fcb802ceb1357f008836816a Mon Sep 17 00:00:00 2001
+From: Yongxin Liu <yongxin.liu@windriver.com>
+Date: Wed, 20 Mar 2024 10:12:29 +0000
+Subject: [PATCH] rdk/grr: klm/cpk-ae: drop Werror
+
+Fix the following error:
+
+rdk/klm/cpk-ae/ice_sw_ae_ioctl.c:314:17: error: implicit conversion from
+'enum ae_vport_command' to 'enum ae_vsi_command' [-Werror=enum-conversion]
+  314 |         {.cmd = ICE_SW_AE_VPORT_CMD_ADD_NODE,
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Upstream-Status: Inappropriate [RDK is released in tarball only]
+
+Signed-off-by: Yongxin Liu <yongxin.liu@windriver.com>
+---
+ klm/cpk-ae/Makefile | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/klm/cpk-ae/Makefile b/klm/cpk-ae/Makefile
+index 1a64c29..442427b 100644
+--- a/klm/cpk-ae/Makefile
++++ b/klm/cpk-ae/Makefile
+@@ -15,8 +15,6 @@ ccflags-y += -I$(PWD) -I$(PWD)/shared
+ # in case these aren't all stripped out from shared code
+ ccflags-y += -DSWITCH_MODE
+ 
+-ccflags-y += -Werror
+-
+ ifdef FPGA_SUPPORT
+ ccflags-y += -DFPGA_SUPPORT -DFPGA_F10_SUPPORT
+ else
+-- 
+2.39.3
+
