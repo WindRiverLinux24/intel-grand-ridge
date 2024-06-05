@@ -1,0 +1,48 @@
+grandridge-rdk
+==============
+
+1. Building
+-----------
+The Runtime Development Kit (RDK) is a package of user space and kernel space
+libraries and drivers which provides a multi stage packet processing architecture
+for wireless applications.
+
+Wind River doesn't provide RDK packages, please contact Intel. RDK tools are not
+buildable by default. In order to build it, you need to
+
+1) Copy and rename rdk_klm_src_<branch>_<revision>_<date>_<commit>.tgz to
+${LAYERDIR}/recipes-devtools/rdk-tools-grr/files/rdk_klm_src_grr.tgz.
+
+2) Copy and rename rdk_user_src_<branch>_<revision>_<date>_<commit>.tgz to
+${LAYERDIR}/recipes-devtools/rdk-tools-grr/files/rdk_user_src_grr.tgz.
+
+3) To enable this feature, please add the following configuration parameter.
+
+    --template=feature/grandridge-rdk
+
+4) Uncomment RDK_TOOLS_SOURCE in feature/grandridge-rdk/template.conf
+
+5) Add the following setting in conf/local.conf.
+
+    CUSTOMER_RECIPES:wr-intel-grand-ridge += "rdk-tools-grr"
+
+2. After installing on target
+-----------------------------
+The rdk-tools will be installed to three locations.
+
+1) Libraries, header files, binaries and configuration files will be installed
+to /opt/intel/rdk-tools on target.
+
+2) Kernel out-of-tree drivers will be installed to
+/lib/modules/<kernel version>/kernel/drivers/staging/intel-rdk on target.
+
+3) Firmware in RDK will be installed to /lib/firmware on target.
+
+3. Kernel out-of-tree drivers
+-----------------------------
+All drivers from Intel RDK tools are disabled from auto-loading. You can use "modprobe"
+to load the driver you want, or change "module_conf_<driver>" in rdk-tools-grr.bb.
+
+#@TYPE: Wrtemplate
+#@NAME: grandridge-rdk
+#@DESCRIPTION: Install Intel Grand Ridge RDK tools to the image

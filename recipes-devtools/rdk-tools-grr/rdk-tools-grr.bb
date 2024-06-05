@@ -22,7 +22,9 @@ SRC_URI = "${RDK_TOOLS_SOURCE} \
           "
 
 # RDK user space and kernel module source packages
-RDK_TOOLS_SOURCE ?= "file://rdk_user_src_grr.tgz file://rdk_klm_src_grr.tgz"
+# Define this if the files exist.  Usually done in template feature/grandridge-rdk.
+# For example: RDK_TOOLS_SOURCE ?= "file://rdk_user_src_grr.tgz file://rdk_klm_src_grr.tgz"
+RDK_TOOLS_SOURCE ??= ""
 
 COMPATIBLE_MACHINE = "null"
 
