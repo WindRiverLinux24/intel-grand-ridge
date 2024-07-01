@@ -13,6 +13,7 @@ Table of Contents:
 ** 2.2 Supported Features
 ** 2.3 Unsupported Feature
 * 3. Runtime Development Kit (RDK)
+* 4. Note
 
 1. Overview
 ===========
@@ -143,3 +144,10 @@ platform doesn't support Intel SST.
 
 Intel Runtime Development Kit (RDK) is enabled through template feature/grandridge-rdk.
 Please read ${LAYERDIR}/templates/feature/grandridge-rdk/README first.
+
+4. Note
+=======
+
+The default serial console port is ttyS4 at MMIO 0xfe03e000.
+The console index may be different on your board due to different BIOS settings and
+different design of hardware.
