@@ -10,6 +10,8 @@ Table of Contents:
 ** 1.4 License
 * 2. Hardware
 ** 2.1 Validated Board Info
+** 2.2 Supported Features
+** 2.3 Unsupported Feature
 * 3. Runtime Development Kit (RDK)
 
 1. Overview
@@ -68,7 +70,6 @@ THE SOFTWARE.
 
 2.1 Validated Board Info
 ------------------------
-
 This BSP is only validated in the following environment. If you use this BSP
 in a different environment it may have some issues.
 
@@ -86,6 +87,56 @@ in a different environment it may have some issues.
 
 [Board Info]
 	Loganville BTS Travertine Falls Reference Platform
+
+2.2 Supported Features
+----------------------
+	o Bus
+		+ PCI-Express
+		+ I2C/SMBus
+			+ Intel Corporation Device [8086:1bc9] (rev 11)
+
+	o Network
+		+ Intel Corporation I210 Gigabit Network Connection [8086:1533] (rev 03)
+		+ Intel Corporation Device [8086:0dbd] (rev 04)
+
+	o USB
+		+ Intel Corporation Device [8086:1bcd] (rev 11)
+
+	o Storage
+		+ SATA controller: Intel Corporation SATA AHCI Controller [8086:1bf2] (rev 11)
+
+	o Power Management
+		+ CPU Freq: ACPI P-state
+		+ CPU Idle: ACPI C-state
+		+ ACPI S0
+		+ ACPI S4
+
+	o DLB(a.k.a HQM) -- Dynamic Load Balancer
+		+ Co-processor [0b40]: Intel Corporation Device [8086:2714]
+
+	o Intel QuickAssist Technology
+		+ Co-processor [0b40]: Intel Corporation Device [8086:578a] (rev 04)
+
+	o Intel Data Accelerators
+		+ System peripheral [0880]: Intel Corporation Device [8086:0b25]
+
+	o Misc Devices
+		+ UART: 8250/16550A compatible serial port
+		+ RTC: PC-style CMOS RTC
+		+ Watchdog: Intel PCH TCO device
+		+ HW Monitor: Intel CPU core temperature sensor
+
+	o TPM2.0
+		+ IFX0785:00: 2.0 TPM (device-id 0x1B, rev-id 22)
+
+2.3 Unsupported Feature
+-----------------------
+The following features are not supported and not validated.
+
+  x Intel Speed Select Technology Interface
+
+According to Chapter 15 of Intel Grand Ridge EDS Volume2 Rev. 1.0, the Loganville BTS
+platform doesn't support Intel SST.
 
 3. Runtime Development Kit (RDK)
 ================================
