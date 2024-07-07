@@ -50,6 +50,8 @@ export OECORE_NATIVE_SYSROOT = "${STAGING_DIR_NATIVE}"
 # So disable lttng support here.
 export RDK_LTTNG_ENABLE = "false"
 
+export KCFLAGS = "-fmacro-prefix-map=${S}= -fdebug-prefix-map=${S}= "
+
 TARGET_CC_ARCH += "${LDFLAGS}"
 EXTRA_OEMAKE = "V=1"
 
