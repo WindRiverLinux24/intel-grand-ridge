@@ -131,3 +131,4 @@ module_conf_qat_c4xxx = "blacklist qat_c4xxx"
 
 INSANE_SKIP:${PN} = "already-stripped ldflags"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+INSANE_SKIP:${PN} += "buildpaths"
