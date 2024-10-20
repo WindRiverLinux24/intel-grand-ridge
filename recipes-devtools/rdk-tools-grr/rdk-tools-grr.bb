@@ -18,7 +18,7 @@ COMPATIBLE_MACHINE = "null"
 inherit module meson pkgconfig
 
 # Currently supported version
-RDK_TOOLS_VERSION ?= "2407"
+RDK_TOOLS_VERSION ?= "2409"
 
 S = "${WORKDIR}/rdk"
 PV = "${RDK_TOOLS_VERSION}"
