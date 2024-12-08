@@ -1,0 +1,33 @@
+From 93c3f73f0043676212802d6c8e81bd2d21024d4e Mon Sep 17 00:00:00 2001
+From: Yongxin Liu <yongxin.liu@windriver.com>
+Date: Mon, 9 Dec 2024 07:14:28 +0800
+Subject: [PATCH] rdk/grr: remove flags parameter from genlmsg_multicast_allns()
+
+Due to backport of upstream commit 56440d7ec28d ("genetlink: hold
+RCU in genlmsg_mcast()"), the flags parameter has been removed from
+genlmsg_multicast_allns().
+
+Upstream-Status: Inappropriate [RDK is released in tarball only]
+
+Signed-off-by: Yongxin Liu <yongxin.liu@windriver.com>
+---
+ klm/qat/inline/ipsec_netlink_krn.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/klm/qat/inline/ipsec_netlink_krn.c b/klm/qat/inline/ipsec_netlink_krn.c
+index 18540fa..48523e0 100644
+--- a/klm/qat/inline/ipsec_netlink_krn.c
++++ b/klm/qat/inline/ipsec_netlink_krn.c
+@@ -557,8 +557,7 @@ int ipsec_offload_notify(enum ipsec_event event, u32 device)
+ 	nla_put_u32(msg, SA_ATTR_EVENT, event);
+ 	nla_put_u32(msg, SA_ATTR_DEVICE, device);
+ 	genlmsg_end(msg, hdr);
+-	err = genlmsg_multicast_allns(&ipsec_genl_family,  msg, 0,
+-				      0, GFP_ATOMIC);
++	err = genlmsg_multicast_allns(&ipsec_genl_family,  msg, 0, 0);
+ 
+ 	if (err == -ESRCH)
+ 		err = 0;
+-- 
+2.46.2
+

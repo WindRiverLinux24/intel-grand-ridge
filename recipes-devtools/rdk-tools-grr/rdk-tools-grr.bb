@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-or-later;md5=fed5435554
 
 SRC_URI = "${RDK_TOOLS_SOURCE} \
            file://rdk-tools.sh \
+           file://rdk-grr-remove-flags-parameter-from-genlmsg_multicas.patch \
           "
 
 # RDK user space and kernel module source packages
