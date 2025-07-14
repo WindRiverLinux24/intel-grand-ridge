@@ -18,3 +18,6 @@ TUNE_PKGARCH:tune-grandridge-64 = "grandridge-64"
 
 PACKAGE_EXTRA_ARCHS:tune-grandridge-32 = "${PACKAGE_EXTRA_ARCHS:tune-x86} grandridge-32"
 PACKAGE_EXTRA_ARCHS:tune-grandridge-64 = "${PACKAGE_EXTRA_ARCHS:tune-x86-64} grandridge-64"
+
+# Testcase of cve-2015-3290 in ltp doesn't work with AVX, so disable avx.
+TUNE_CCARGS:append:pn-ltp = "${@bb.utils.contains('TUNE_FEATURES', 'grandridge', ' -mno-avx', '', d)}"
